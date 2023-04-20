@@ -27,17 +27,17 @@ class _signupState extends State<signup> {
                     child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
                       child: Container(
-                        height: 150,
-                        width: 300,
-                        decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.3),
-                            borderRadius: BorderRadius.circular(25),
-                            border:
-                                Border.all(width: 2, color: Colors.white30)),
-                        child: Column(
-                          children: [],
-                        ),
-                      ),
+                          height: 150,
+                          width: 300,
+                          decoration: BoxDecoration(
+                              color: Color.fromARGB(0, 255, 255, 255)
+                                  .withOpacity(0.3),
+                              borderRadius: BorderRadius.circular(25),
+                              border:
+                                  Border.all(width: 2, color: Colors.white30)),
+                          child: Image.asset(
+                            'assets/logo.jpeg',
+                          )),
                     ),
                   ),
                 ),
@@ -116,8 +116,8 @@ class _signupState extends State<signup> {
                               border: Border.all(width: 1, color: Colors.white),
                               gradient: LinearGradient(
                                   colors: const [
-                                    Color(0xff77EED8),
-                                    Color(0xff9EABE4)
+                                    Color.fromARGB(255, 0, 149, 179),
+                                    Color.fromARGB(255, 0, 149, 179)
                                   ],
                                   begin: Alignment.bottomLeft,
                                   end: Alignment.topRight),
@@ -135,6 +135,39 @@ class _signupState extends State<signup> {
                           ),
                         ),
                       ),
+                      Container(
+                        padding: EdgeInsets.only(
+                          left: 50,
+                          top: 15,
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              child: Text(
+                                " Have an account",
+                                style: TextStyle(fontSize: 15),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 5.0),
+                              child: GestureDetector(
+                                child: Text(
+                                  "Login",
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 38, 0, 255)),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => login(),
+                                      ));
+                                },
+                              ),
+                            )
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),

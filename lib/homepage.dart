@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_mpsem6/camer.dart';
+
+import 'package:flutter_application_mpsem6/camera2.dart';
 import 'package:flutter_application_mpsem6/login.dart';
 import 'package:flutter_application_mpsem6/signup.dart';
 
@@ -9,10 +10,8 @@ class homepage extends StatefulWidget {
 }
 
 PageController pageController = PageController();
-
 final List<Friend> myFriend = [
-  Friend(name: 'Mona Deshmukh', name2: 'Girish', name3: 'Aayan'),
-  Friend(name: 'Aryna Deshmukh', name2: 'Girish', name3: 'Aryan'),
+  // Friend(name: 'Mona Deshmukh', name2: 'Girish', name3: 'Aayan'),
 
   // Friend(name: 'Mona', name2: 'Girish'),
 ];
@@ -20,6 +19,7 @@ Widget nameTemplate(quote) {
   return Card(
     elevation: 5,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    color: Colors.amber,
     margin: EdgeInsets.fromLTRB(16, 16, 16, 0),
     child: Padding(
       padding: const EdgeInsets.all(15),
@@ -56,8 +56,23 @@ Widget nameTemplate(quote) {
                 ),
               ],
             ),
-            const SizedBox(height: 30),
-            Container()
+            const SizedBox(height: 20),
+            Container(
+              child: Row(children: [
+                Container(
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.delete_forever),
+                  ),
+                ),
+                Container(
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: Icon(Icons.delete_forever),
+                  ),
+                ),
+              ]),
+            )
           ]),
     ),
   );
@@ -86,7 +101,10 @@ class _homepageState extends State<homepage> {
               gradient: LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
-                  colors: [Color(0xff77EED8), Color(0xff9EABE4)])),
+                  colors: [
+                Color.fromARGB(255, 0, 149, 179),
+                Color.fromARGB(255, 0, 149, 179)
+              ])),
         ),
         leading: IconButton(
           onPressed: () {
@@ -98,7 +116,7 @@ class _homepageState extends State<homepage> {
           },
           icon: Icon(
             Icons.logout,
-            color: Colors.black,
+            color: Color.fromARGB(255, 255, 255, 255),
           ),
         ),
         actions: [
@@ -107,12 +125,12 @@ class _homepageState extends State<homepage> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => camera(),
+                      builder: (context) => camera2(),
                     ));
               },
               icon: Icon(
                 Icons.camera_alt,
-                color: Colors.black,
+                color: Color.fromARGB(255, 255, 255, 255),
               ))
         ],
         // ignore: prefer_const_constructors
@@ -131,7 +149,10 @@ class _homepageState extends State<homepage> {
               gradient: LinearGradient(
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
-                colors: [Color(0xff77EED8), Color(0xff9EABE4)],
+                colors: [
+                  Color.fromARGB(255, 0, 149, 179),
+                  Color.fromARGB(255, 0, 149, 179)
+                ],
               ),
             ),
             // i have found out the height of the bottom navigation bar is roughly 60
@@ -143,15 +164,15 @@ class _homepageState extends State<homepage> {
             // remove elevation because it causes weird shadow
             elevation: 0,
             // set the color of the selected item
-            unselectedItemColor: Color.fromARGB(255, 0, 0, 0),
+            unselectedItemColor: Color.fromARGB(255, 255, 252, 252),
             unselectedFontSize: 14,
-            selectedItemColor: Colors.black,
+            selectedItemColor: Color.fromARGB(255, 255, 254, 254),
 
             items: const [
               BottomNavigationBarItem(
                 icon: Icon(
                   Icons.storage,
-                  color: Colors.black,
+                  color: Color.fromARGB(255, 243, 242, 242),
                 ),
                 label: 'Home Page',
               ),

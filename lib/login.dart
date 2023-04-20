@@ -1,6 +1,7 @@
 import 'dart:ui';
-
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'package:flutter_application_mpsem6/camera2.dart';
 import 'package:flutter_application_mpsem6/homepage.dart';
 import 'package:flutter_application_mpsem6/signup.dart';
 
@@ -28,65 +29,16 @@ class _loginState extends State<login> {
                     child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
                       child: Container(
-                        height: 150,
-                        width: 300,
-                        decoration: BoxDecoration(
-                            color: Colors.white.withOpacity(0.3),
-                            borderRadius: BorderRadius.circular(25),
-                            border:
-                                Border.all(width: 2, color: Colors.white30)),
-                        child: Column(
-                          children: [
-                            Container(
-                                padding: EdgeInsets.only(top: 15),
-                                alignment: Alignment.topCenter,
-                                child: Text(
-                                  "Don't have an account",
-                                  style: TextStyle(
-                                      color: Colors.white, fontSize: 20),
-                                )),
-                            Container(
-                              padding: EdgeInsets.only(top: 25),
-                              child: ElevatedButton(
-                                style: ElevatedButton.styleFrom(
-                                    primary: Color.fromARGB(0, 255, 255, 255),
-                                    shadowColor: Colors.transparent,
-                                    elevation: 0),
-                                onPressed: () {
-                                  Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                        builder: (context) => signup(),
-                                      ));
-                                },
-                                child: Ink(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(
-                                        width: 1, color: Colors.white),
-                                    gradient: LinearGradient(
-                                        colors: const [
-                                          Color(0xff0085FF),
-                                          Color(0xff1A00B3)
-                                        ],
-                                        begin: Alignment.bottomLeft,
-                                        end: Alignment.topRight),
-                                    borderRadius: BorderRadius.circular(25),
-                                  ),
-                                  child: Container(
-                                      constraints: BoxConstraints(
-                                          maxWidth: 140, maxHeight: 35),
-                                      alignment: Alignment.center,
-                                      child: Text(
-                                        'Register',
-                                        style: TextStyle(
-                                            fontSize: 15, letterSpacing: 2),
-                                      )),
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
+                          height: 150,
+                          width: 300,
+                          decoration: BoxDecoration(
+                              color: Colors.white.withOpacity(0.3),
+                              borderRadius: BorderRadius.circular(25),
+                              border:
+                                  Border.all(width: 2, color: Colors.white30)),
+                          child: Image.asset(
+                            'assets/logo.jpeg',
+                          )),
                     ),
                   ),
                 ),
@@ -104,7 +56,7 @@ class _loginState extends State<login> {
                       Container(
                           padding: EdgeInsets.only(top: 50),
                           child: Text(
-                            "Sign Up",
+                            "Sign In",
                             style: TextStyle(
                               fontSize: 30,
                               letterSpacing: 4,
@@ -145,7 +97,7 @@ class _loginState extends State<login> {
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => homepage(),
+                                  builder: (context) => camera2(),
                                 ));
                           },
                           child: Ink(
@@ -153,8 +105,8 @@ class _loginState extends State<login> {
                               border: Border.all(width: 1, color: Colors.white),
                               gradient: LinearGradient(
                                   colors: const [
-                                    Color(0xff77EED8),
-                                    Color(0xff9EABE4)
+                                    Color.fromARGB(255, 0, 149, 179),
+                                    Color.fromARGB(255, 0, 149, 179)
                                   ],
                                   begin: Alignment.bottomLeft,
                                   end: Alignment.topRight),
@@ -171,6 +123,39 @@ class _loginState extends State<login> {
                           ),
                         ),
                       ),
+                      Container(
+                        padding: EdgeInsets.only(
+                          left: 50,
+                          top: 15,
+                        ),
+                        child: Row(
+                          children: [
+                            Container(
+                              child: Text(
+                                "Don't have an account",
+                                style: TextStyle(fontSize: 15),
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 5.0),
+                              child: GestureDetector(
+                                child: Text(
+                                  "Register",
+                                  style: TextStyle(
+                                      color: Color.fromARGB(255, 38, 0, 255)),
+                                ),
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => signup(),
+                                      ));
+                                },
+                              ),
+                            )
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),
