@@ -12,7 +12,7 @@ class camera2 extends StatefulWidget {
 }
 
 class _camera2State extends State<camera2> {
-  String scnnedText = "";
+  String scannedText = "";
   File? image;
   Future pickImage(ImageSource source) async {
     final image = await ImagePicker().pickImage(source: source);
@@ -23,12 +23,14 @@ class _camera2State extends State<camera2> {
   }
 
   Future convert() async {
-    final url =
-        Uri.parse("https://HandwritingRec.tawderohit2012.repl.co/predict");
+    final url = Uri.parse(
+        "https://j54jcdvf06.execute-api.us-west-2.amazonaws.com/predict");
     final bytes = await image!.readAsBytes();
 
     final text = await http.post(url, body: bytes);
     print(text.body);
+    scannedText = (text.body);
+    print('hello');
   }
 
   @override
@@ -74,7 +76,7 @@ class _camera2State extends State<camera2> {
         child: Center(
           child: Column(children: [
             Container(
-              padding: EdgeInsets.only(top: 50, bottom: 20),
+              padding: EdgeInsets.only(top: 50, bottom: 0),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     primary: Color.fromARGB(0, 255, 255, 255),
@@ -112,7 +114,7 @@ class _camera2State extends State<camera2> {
               ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 20, bottom: 40),
+              padding: EdgeInsets.only(top: 20, bottom: 20),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     primary: Color.fromARGB(0, 255, 255, 255),
@@ -189,11 +191,32 @@ class _camera2State extends State<camera2> {
                       )),
                 ),
               ),
+            ),
+            Container(
+              child: Container(
+                child: Row(children: [
+                  FutureBuilder(
+                      future: convert(),
+                      builder: ((context, snapshot) {
+                        return Center(
+                          child: Container(
+                              padding: EdgeInsets.only(
+                                top: 20,
+                                left: 45,
+                              ),
+                              child: Text(
+                                'The identified text is: $scannedText',
+                                style: TextStyle(
+                                    fontSize: 20, fontWeight: FontWeight.w500),
+                              )),
+                        );
+                      }))
+                ]),
+              ),
             )
           ]),
         ),
       ),
     );
-    
   }
 }
