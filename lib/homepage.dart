@@ -108,11 +108,7 @@ class _homepageState extends State<homepage> {
         ),
         leading: IconButton(
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => signup(),
-                ));
+            
           },
           icon: Icon(
             Icons.logout,
