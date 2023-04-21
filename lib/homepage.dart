@@ -93,7 +93,7 @@ class _homepageState extends State<homepage> {
       appBar: AppBar(
         title: Center(
             child: Text(
-          'Page Scanner',
+          'Text Scanner',
           style: TextStyle(letterSpacing: 1, wordSpacing: 2),
         )),
         flexibleSpace: Container(
@@ -107,9 +107,7 @@ class _homepageState extends State<homepage> {
               ])),
         ),
         leading: IconButton(
-          onPressed: () {
-            
-          },
+          onPressed: () {},
           icon: Icon(
             Icons.logout,
             color: Color.fromARGB(255, 255, 255, 255),
@@ -133,7 +131,55 @@ class _homepageState extends State<homepage> {
       ),
       body: SingleChildScrollView(
         child: Column(
-          children: myFriend.map((quote) => nameTemplate(quote)).toList(),
+          children: [
+            Container(
+              child: Image.asset('assets/logo.jpeg'),
+            ),
+            Container(
+              padding: EdgeInsets.only(top: 150, bottom: 0, left: 50),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                    primary: Color.fromARGB(0, 255, 255, 255),
+                    shadowColor: Colors.transparent,
+                    elevation: 0),
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => camera2(),
+                      ));
+                },
+                child: Ink(
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 1, color: Colors.white),
+                    gradient: LinearGradient(colors: const [
+                      Color.fromARGB(255, 0, 149, 179),
+                      Color.fromARGB(255, 0, 149, 179)
+                    ], begin: Alignment.bottomLeft, end: Alignment.topRight),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Container(
+                      constraints: BoxConstraints(maxWidth: 300, maxHeight: 52),
+                      alignment: Alignment.center,
+                      child: Row(
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(left: 60),
+                            child: Text(
+                              'Start Scanning',
+                              style: TextStyle(fontSize: 20, letterSpacing: 1),
+                            ),
+                          ),
+                          Container(
+                            padding: EdgeInsets.only(left: 10),
+                            child: Icon(Icons.camera_alt),
+                          ),
+                        ],
+                      )),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: Stack(

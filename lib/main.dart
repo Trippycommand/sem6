@@ -9,6 +9,6 @@ void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
     initialRoute: 'login',
-    routes: {'login': (context) => camera2()},
+    routes: {'login': (context) => homepage()},
   ));
 }

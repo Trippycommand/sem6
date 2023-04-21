@@ -39,7 +39,7 @@ class _camera2State extends State<camera2> {
       appBar: AppBar(
         title: Center(
             child: Text(
-          'Camera',
+          'Text Scanner',
           style: TextStyle(letterSpacing: 1, wordSpacing: 2),
         )),
         flexibleSpace: Container(
