@@ -136,7 +136,7 @@ class _homepageState extends State<homepage> {
               child: Image.asset('assets/logo.jpeg'),
             ),
             Container(
-              padding: EdgeInsets.only(top: 150, bottom: 0, left: 50),
+              padding: EdgeInsets.only(top: 150, bottom: 0, left: 20),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     primary: Color.fromARGB(0, 255, 255, 255),

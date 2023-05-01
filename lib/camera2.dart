@@ -152,7 +152,7 @@ class _camera2State extends State<camera2> {
               ),
             ),
             image != null
-                ? Image.file(image!, width: 300, height: 350, fit: BoxFit.cover)
+                ? Image.file(image!, width: 300, height: 320, fit: BoxFit.fill)
                 : Container(),
             Container(
               padding: EdgeInsets.only(top: 18),
