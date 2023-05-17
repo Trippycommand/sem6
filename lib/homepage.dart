@@ -102,8 +102,8 @@ class _homepageState extends State<homepage> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                Color.fromARGB(255, 0, 149, 179),
-                Color.fromARGB(255, 0, 149, 179)
+                Color(0xffad5389),
+                Color(0xff3c1053),
               ])),
         ),
         leading: IconButton(
@@ -132,11 +132,28 @@ class _homepageState extends State<homepage> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Container(
-              child: Image.asset('assets/logo.jpeg'),
+            Padding(
+              padding: const EdgeInsets.only(top: 40, left: 20, right: 30),
+              child: Material(
+                elevation: 5,
+                shape: CircleBorder(),
+                shadowColor: Color(0xffad5389),
+                clipBehavior: Clip.antiAlias,
+                child: ClipOval(
+                  child: Container(
+                    height: 300,
+                    child: Image.asset(
+                      'assets/icon3.png',
+                      height: 300,
+                      width: 300,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                ),
+              ),
             ),
             Container(
-              padding: EdgeInsets.only(top: 150, bottom: 0, left: 20),
+              padding: EdgeInsets.only(top: 80, bottom: 0, left: 30, right: 30),
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
                     primary: Color.fromARGB(0, 255, 255, 255),
@@ -153,8 +170,8 @@ class _homepageState extends State<homepage> {
                   decoration: BoxDecoration(
                     border: Border.all(width: 1, color: Colors.white),
                     gradient: LinearGradient(colors: const [
-                      Color.fromARGB(255, 0, 149, 179),
-                      Color.fromARGB(255, 0, 149, 179)
+                      Color.fromARGB(255, 167, 0, 179),
+                      Color.fromARGB(255, 167, 0, 179),
                     ], begin: Alignment.bottomLeft, end: Alignment.topRight),
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -192,8 +209,8 @@ class _homepageState extends State<homepage> {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  Color.fromARGB(255, 0, 149, 179),
-                  Color.fromARGB(255, 0, 149, 179)
+                  Color(0xffad5389),
+                  Color(0xff3c1053),
                 ],
               ),
             ),

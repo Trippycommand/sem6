@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_application_mpsem6/homepage.dart';
 import 'dart:io';
@@ -48,8 +50,8 @@ class _camera2State extends State<camera2> {
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [
-                Color.fromARGB(255, 0, 149, 179),
-                Color.fromARGB(255, 0, 149, 179)
+                Color(0xffad5389),
+                Color(0xff3c1053),
               ])),
         ),
         leading: Icon(
@@ -87,8 +89,8 @@ class _camera2State extends State<camera2> {
                   decoration: BoxDecoration(
                     border: Border.all(width: 1, color: Colors.white),
                     gradient: LinearGradient(colors: const [
-                      Color.fromARGB(255, 0, 149, 179),
-                      Color.fromARGB(255, 0, 149, 179)
+                      Color.fromARGB(255, 167, 0, 179),
+                      Color.fromARGB(255, 167, 0, 179),
                     ], begin: Alignment.bottomLeft, end: Alignment.topRight),
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -125,8 +127,8 @@ class _camera2State extends State<camera2> {
                   decoration: BoxDecoration(
                     border: Border.all(width: 1, color: Colors.white),
                     gradient: LinearGradient(colors: const [
-                      Color.fromARGB(255, 0, 149, 179),
-                      Color.fromARGB(255, 0, 149, 179)
+                      Color.fromARGB(255, 167, 0, 179),
+                      Color.fromARGB(255, 167, 0, 179),
                     ], begin: Alignment.bottomLeft, end: Alignment.topRight),
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -151,9 +153,16 @@ class _camera2State extends State<camera2> {
                 ),
               ),
             ),
-            image != null
-                ? Image.file(image!, width: 300, height: 320, fit: BoxFit.fill)
-                : Container(),
+            Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: AspectRatio(
+                aspectRatio: 16 / 9,
+                child: image != null
+                    ? Image.file(image!,
+                        width: 300, height: 320, fit: BoxFit.fill)
+                    : Container(),
+              ),
+            ),
             Container(
               padding: EdgeInsets.only(top: 18),
               child: ElevatedButton(
@@ -166,8 +175,8 @@ class _camera2State extends State<camera2> {
                   decoration: BoxDecoration(
                     border: Border.all(width: 1, color: Colors.white),
                     gradient: LinearGradient(colors: const [
-                      Color.fromARGB(255, 0, 149, 179),
-                      Color.fromARGB(255, 0, 149, 179)
+                      Color.fromARGB(255, 167, 0, 179),
+                      Color.fromARGB(255, 167, 0, 179),
                     ], begin: Alignment.bottomLeft, end: Alignment.topRight),
                     borderRadius: BorderRadius.circular(10),
                   ),
@@ -192,28 +201,33 @@ class _camera2State extends State<camera2> {
                 ),
               ),
             ),
-            Container(
+            Center(
               child: Container(
+                padding: EdgeInsets.only(left: 100, top: 20),
                 child: Row(children: [
                   FutureBuilder(
                       future: convert(),
                       builder: ((context, snapshot) {
-                        return Center(
-                          child: Container(
-                              padding: EdgeInsets.only(
-                                top: 20,
-                                left: 45,
+                        return RichText(
+                            text: TextSpan(
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.black,
+                          ),
+                          children: <TextSpan>[
+                            TextSpan(text: 'The identified text is:\n'),
+                            TextSpan(
+                              text: scannedText,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
                               ),
-                              child: Text(
-                                'The identified text is: $scannedText',
-                                style: TextStyle(
-                                    fontSize: 20, fontWeight: FontWeight.w500),
-                              )),
-                        );
+                            ),
+                          ],
+                        ));
                       }))
                 ]),
               ),
-            )
+            ),
           ]),
         ),
       ),
